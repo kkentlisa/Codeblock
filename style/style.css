@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+main{
+    display: flex;
+}
+.blockPanel{
+    border: 1px solid black;
+    width: 25vw;
+    height: 100vh;
+}
+.workSpace{
+    border: 1px solid red;
+    width: 50vw;
+    height: 100vh;
+}
+.outputPanel{
+    border: 1px solid green;
+    width: 25vw;
+    height: 100vh;
+
+}
