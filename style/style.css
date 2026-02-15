@@ -2,23 +2,32 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 main{
-    display: flex;
+    display: grid;
+    grid-template-columns: 25vw 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    gap: 10px;
+    height: 100vh;
+    padding: 10px;
 }
 .blockPanel{
-    border: 1px solid black;
-    width: 25vw;
-    height: 100vh;
+    border: 2px solid dodgerblue;
+    grid-row: 1/span 4;
+    height: 100%;
+    background-color: rgba(30, 144, 255, 0.15);
+
 }
 .workSpace{
-    border: 1px solid red;
-    width: 50vw;
-    height: 100vh;
+    border: 2px solid deeppink;
+    grid-column: 2;
+    grid-row: 1/span 3;
+    background-color: rgba(255, 20, 147, 0.1);
 }
 .outputPanel{
-    border: 1px solid green;
-    width: 25vw;
-    height: 100vh;
-
+    border: 2px solid limegreen;
+    grid-column: 2;
+    grid-row: 4/span 1;
+    background-color: rgba(50, 205, 50, 0.15);
 }
