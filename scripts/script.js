@@ -36,6 +36,7 @@ function renderBlock(blockData) {
     block.classList.add('block');
     block.classList.add(`block-${blockData.type}`);
 
+    block.style.position = 'absolute';
     block.style.left = blockData.position.x + 'px';
     block.style.top = blockData.position.y + 'px';
 
@@ -103,11 +104,9 @@ function setupBlockButtons() {
         });
     });
 }
-
 window.addEventListener('load', function() {
-    blocksInWorkSpace = [];
-
-    renderAllBlocks(blocksInWorkSpace);
-
+    if (typeof blocksInWorkSpace !== 'undefined' && blocksInWorkSpace.length > 0) {
+        renderAllBlocks(blocksInWorkSpace);
+    }
     setupBlockButtons();
 });
