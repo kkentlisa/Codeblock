@@ -1,0 +1,41 @@
+.block{
+    position: absolute;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 10px;
+}
+.block-input{
+    border: 3px solid #ff033e;
+    background-color: lightcoral;
+}
+.block-variableInit{
+    border: 2px solid gold;
+    background-color: palegoldenrod;
+}
+.block-assignValue{
+    border: 2px solid limegreen;
+    background-color: lightgreen;
+}
+.block-if{
+    border: 2px solid dodgerblue;
+    background-color: lightskyblue;
+}
+.block-while{
+    border: 2px solid #cd00cd;
+    background-color: plum;
+}
+.block:hover{
+    border-width: 4px;
+    transform: translateY(-2px);
+}
+.block-delete{
+    border: 2px solid red;
+    background-color: red;
+    color: white;
+    right: -15px;
+    border-radius: 50%;
+    opacity: 0;
+}
+.block:hover .block-delete {
+    opacity: 1;
+}
