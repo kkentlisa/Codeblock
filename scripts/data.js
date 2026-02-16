@@ -1,4 +1,4 @@
-let blocksInWorkSpase = [];
+let blocksInWorkSpace = [];
 let blockId = 0;
 
 function createBlock(type, x, y){
@@ -8,6 +8,10 @@ function createBlock(type, x, y){
         data.childBlocks = [];
     }
 
+    else if (type === "input"){
+        data.value = "";
+    }
+
     else if (type === "variableInit"){
         data.name = "";
         data.value = 0;
@@ -15,37 +19,32 @@ function createBlock(type, x, y){
 
     else if (type === "assignValue"){
         data.variable = "";
-        data.value = "";
-    }
-
-    else if (type === "assignArithmeticBlock"){
-        data.variable = "";
-        data.arithmeticBlock = null;
+        data.value = null;
     }
 
     else if (type === "add"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "subtract"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "multiply"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "div"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "mod"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "if"){
@@ -60,47 +59,47 @@ function createBlock(type, x, y){
     }
 
     else if (type === "gt"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "lt"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "eq"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "neq"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "gte"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "lte"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "and"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "or"){
-        data.left = "";
-        data.right = "";
+        data.left = null;
+        data.right = null;
     }
 
     else if (type === "not"){
-        data.operand = "";
+        data.operand = null;
     }
 
     else if (type === "while"){
@@ -129,10 +128,13 @@ function createBlock(type, x, y){
         data.name = "";
     }
 
-    return{
+    const newBlock = {
         id: blockId++,
         type: type,
         position: {x: x, y: y},
         data: data
     }
+
+    blocksInWorkSpace.push(newBlock);
+    return newBlock;
 }
