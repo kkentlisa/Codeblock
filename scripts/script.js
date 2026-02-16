@@ -88,25 +88,3 @@ function renderAllBlocks(blocksArray) {
         setupDraggable(blockElement);
     });
 }
-function setupBlockButtons() {
-    const buttons = document.querySelectorAll('.block-btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const type = this.dataset.type;
-            const x = 50 + Math.random() * 300;
-            const y = 50 + Math.random() * 200;
-
-            const newBlock = createBlock(type, x, y);
-
-            const blockElement = renderBlock(newBlock);
-            workspace.appendChild(blockElement);
-            setupDraggable(blockElement);
-        });
-    });
-}
-window.addEventListener('load', function() {
-    if (typeof blocksInWorkSpace !== 'undefined' && blocksInWorkSpace.length > 0) {
-        renderAllBlocks(blocksInWorkSpace);
-    }
-    setupBlockButtons();
-});

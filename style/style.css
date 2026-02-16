@@ -56,52 +56,53 @@ h2{
     font-family: "Comic Sans MS";
     width: 90%;
 }
-.blockPanelButton[datatype="input"] {
+.blockPanelButton[data-type="input"] {
     background-color: lightcoral;
     border: 3px solid #ff033e;
 }
-.blockPanelButton[datatype="declare"]{
+.blockPanelButton[data-type="variableInit"]{
     background-color: palegoldenrod;
     border: 3px solid gold;
 }
-.blockPanelButton[datatype="assign"]{
+.blockPanelButton[data-type="assignValue"]{
     background-color: lightgreen;
     border: 3px solid limegreen;
 }
-.blockPanelButton[datatype="if"]{
+.blockPanelButton[data-type="if"]{
     background-color: lightblue;
     border: 3px solid dodgerblue;
 }
-.blockPanelButton[datatype="while"]{
+.blockPanelButton[data-type="while"]{
     background-color: plum;
     border: 3px solid #cd00cd;
 }
-.blockPanelButton:hover[datatype="input"]{
+.blockPanelButton:hover[data-type="input"]{
     background-color: #ff033e;
     color: white;
     border: 3px solid #ff033e;
 }
-.blockPanelButton:hover[datatype="declare"]{
+.blockPanelButton:hover[data-type="variableInit"]{
     background-color: gold;
     color: white;
     border: 3px solid gold;
 }
-.blockPanelButton:hover[datatype="assign"]{
+.blockPanelButton:hover[data-type="assignValue"]{
     background-color: limegreen;
     color: white;
     border: 3px solid limegreen;
 }
-.blockPanelButton:hover[datatype="if"]{
+.blockPanelButton:hover[data-type="if"]{
     background-color: dodgerblue;
     color: white;
     border: 3px solid dodgerblue;
 }
-.blockPanelButton:hover[datatype="while"]{
+.blockPanelButton:hover[data-type="while"]{
     background-color: #cd00cd;
     color: white;
     border: 3px solid #cd00cd;
 }
 .workSpace{
+    position: relative;
     border: 2px solid deeppink;
     grid-column: 2;
     grid-row: 1/span 3;
