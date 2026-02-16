@@ -1,7 +1,7 @@
 let blocksInWorkSpace = [];
 let blockId = 0;
 
-function createBlock(type, x, y){
+function CreateBlock(type, x, y){
     let data = {};
 
     if (type === "start"){
