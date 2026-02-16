@@ -3,38 +3,103 @@
     margin: 0;
     box-sizing: border-box;
     border-radius: 10px;
+    background-color: #1a1a1a;
+}
+body {
+    font-family: "Comic Sans MS", cursive;
 }
 main{
     display: grid;
-    grid-template-columns: 25vw 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: auto 1fr;
     gap: 10px;
     height: 100vh;
     padding: 10px;
+}
+h1{
+    grid-row-start: 1;
+    text-align: center;
+}
+h1 span:not(:first-child) {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+h1 span:not(:first-child):hover {
+    transform: scale(1.1) translateY(-10px);
+}
+.code{
+    display: grid;
+    width: 100%;
+    grid-row: auto;
+    grid-template-columns: 25% 1fr;
+    grid-auto-rows: 1fr 1fr 1fr 1fr;
+    gap: 10px;
 }
 .blockPanel{
     border: 2px solid dodgerblue;
     grid-row: 1/span 4;
     height: 100%;
     background-color: rgba(30, 144, 255, 0.15);
-
+}
+h2{
+    grid-row-start: 1;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    font-size: 20px;
 }
 .blockPanelButton{
-    background-color: grey;
-    color: white;
-    border: 2px solid darkblue;
+    color: black;
     margin: 10px;
     padding: 10px;
     border-radius: 15px;
     text-align: center;
-    font-family: monospace;
+    font-family: "Comic Sans MS";
     width: 90%;
-    font-weight: bold
 }
-.blockPanelButton:hover{
+.blockPanelButton[datatype="input"] {
+    background-color: lightcoral;
+    border: 3px solid #ff033e;
+}
+.blockPanelButton[datatype="declare"]{
+    background-color: palegoldenrod;
+    border: 3px solid gold;
+}
+.blockPanelButton[datatype="assign"]{
+    background-color: lightgreen;
+    border: 3px solid limegreen;
+}
+.blockPanelButton[datatype="if"]{
+    background-color: lightblue;
+    border: 3px solid dodgerblue;
+}
+.blockPanelButton[datatype="while"]{
+    background-color: plum;
+    border: 3px solid #cd00cd;
+}
+.blockPanelButton:hover[datatype="input"]{
+    background-color: #ff033e;
+    color: white;
+    border: 3px solid #ff033e;
+}
+.blockPanelButton:hover[datatype="declare"]{
+    background-color: gold;
+    color: white;
+    border: 3px solid gold;
+}
+.blockPanelButton:hover[datatype="assign"]{
+    background-color: limegreen;
+    color: white;
+    border: 3px solid limegreen;
+}
+.blockPanelButton:hover[datatype="if"]{
     background-color: dodgerblue;
     color: white;
-    border: 3px solid darkblue;
+    border: 3px solid dodgerblue;
+}
+.blockPanelButton:hover[datatype="while"]{
+    background-color: #cd00cd;
+    color: white;
+    border: 3px solid #cd00cd;
 }
 .workSpace{
     border: 2px solid deeppink;
@@ -47,4 +112,12 @@ main{
     grid-column: 2;
     grid-row: 4/span 1;
     background-color: rgba(50, 205, 50, 0.15);
+    color: white;
+}
+h3{
+    text-align: left;
+    font-size: 16px;
+    background-color: transparent;
+    margin: 5px 10px;
+
 }
