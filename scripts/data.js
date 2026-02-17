@@ -136,6 +136,7 @@ function CreateBlock(type, x, y){
     }
 
     blocksInWorkSpace.push(newBlock);
+    SaveBlocksToStorage();
     return newBlock;
 }
 
@@ -143,5 +144,21 @@ function DeleteBlock(id){
     const index = blocksInWorkSpace.findIndex(block => block.id === id);
     if (index !== -1){
         blocksInWorkSpace.splice(index, 1);
+        SaveBlocksToStorage();
+    }
+}
+
+function SaveBlocksToStorage(){
+    sessionStorage.setItem("blocksInWorkSpace", JSON.stringify(blocksInWorkSpace));
+}
+
+function LoadBlocksFromStorage(){
+    const blocks = sessionStorage.getItem("blocksInWorkSpace");
+    if (blocks){
+        blocksInWorkSpace = JSON.parse(blocks);
+        if (blocksInWorkSpace.length > 0){
+            const maxId = Math.max(...blocksInWorkSpace.map(block => block.id));
+            blockId = maxId + 1;
+        }
     }
 }
