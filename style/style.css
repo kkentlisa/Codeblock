@@ -39,6 +39,8 @@ h1 span:not(:first-child):hover {
     grid-row: 1/span 4;
     height: 100%;
     background-color: rgba(30, 144, 255, 0.15);
+    display: flex;
+    flex-direction: column;
 }
 h2{
     grid-row-start: 1;
@@ -54,7 +56,7 @@ h2{
     border-radius: 15px;
     text-align: center;
     font-family: "Comic Sans MS";
-    width: 90%;
+
 }
 .blockPanelButton[data-type="input"] {
     background-color: lightcoral;
@@ -76,30 +78,24 @@ h2{
     background-color: plum;
     border: 3px solid #cd00cd;
 }
+.blockPanelButton:hover{
+    color: white;
+    transform: scale(1.05) translateY(-2px);
+}
 .blockPanelButton:hover[data-type="input"]{
     background-color: #ff033e;
-    color: white;
-    border: 3px solid #ff033e;
 }
 .blockPanelButton:hover[data-type="variableInit"]{
     background-color: gold;
-    color: white;
-    border: 3px solid gold;
 }
 .blockPanelButton:hover[data-type="assignValue"]{
     background-color: limegreen;
-    color: white;
-    border: 3px solid limegreen;
 }
 .blockPanelButton:hover[data-type="if"]{
     background-color: dodgerblue;
-    color: white;
-    border: 3px solid dodgerblue;
 }
 .blockPanelButton:hover[data-type="while"]{
     background-color: #cd00cd;
-    color: white;
-    border: 3px solid #cd00cd;
 }
 .workSpace{
     position: relative;

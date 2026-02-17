@@ -1,0 +1,12 @@
+.blocks input{
+    background-color: white;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    color: dimgray;
+    font-family: monospace;
+    margin: 5px;
+    padding: 5px;
+}
+.blocks input:hover{
+    border-width: 2px;
+}
