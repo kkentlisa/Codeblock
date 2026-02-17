@@ -31,14 +31,18 @@ function setupDraggable(element) {
     });
 }
 function renderBlock(blockData) {
+    const container = document.createElement('div');
+
+    container.className = 'block-container';
+    container.dataset.id = blockData.id;
+    container.style.position = 'absolute';
+    container.style.left = blockData.position.x + 'px';
+    container.style.top = blockData.position.y + 'px';
+
     const block = document.createElement('div');
 
     block.classList.add('block');
     block.classList.add(`block-${blockData.type}`);
-
-    block.style.position = 'absolute';
-    block.style.left = blockData.position.x + 'px';
-    block.style.top = blockData.position.y + 'px';
 
     block.dataset.id = blockData.id;
 
@@ -53,23 +57,19 @@ function renderBlock(blockData) {
     block.textContent = typeNames[blockData.type] || blockData.type;
 
     const deleteBtn = document.createElement('span');
-    deleteBtn.textContent = '✕';
-    deleteBtn.style.position = 'absolute';
-    deleteBtn.style.top = '5px';
-    deleteBtn.style.right = '5px';
-    deleteBtn.style.cursor = 'pointer';
-    deleteBtn.style.color = '#ff4444';
-    deleteBtn.style.fontWeight = 'bold';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = '✖';
+
+    container.appendChild(deleteBtn);
+    container.appendChild(block);
 
     deleteBtn.onclick = function(e) {
         e.stopPropagation();
         DeleteBlock(blockData.id);
-        block.remove();
+        container.remove();
     };
 
-    block.appendChild(deleteBtn);
-
-    return block;
+    return container;
 }
 
 function renderAllBlocks(blocksArray) {
@@ -78,8 +78,8 @@ function renderAllBlocks(blocksArray) {
     workspace.innerHTML = '';
 
     blocksArray.forEach(blockData => {
-        const blockElement = renderBlock(blockData);
-        workspace.appendChild(blockElement);
-        setupDraggable(blockElement);
+        const containerElement = renderBlock(blockData);
+        workspace.appendChild(containerElement);
+        setupDraggable(containerElement);
     });
 }
