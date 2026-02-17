@@ -26,8 +26,8 @@ function GetRandomPositionInWorkspace(){
 
     const padding = 20;
 
-    const x = padding + Math.random()*(rect.width - 2 * padding);
-    const y = padding + Math.random()*(rect.height - 2 * padding);
+    const x = padding + Math.random()*(rect.width - 2 * padding - 100);
+    const y = padding + Math.random()*(rect.height - 2 * padding - 50);
 
     return {x, y};
 
