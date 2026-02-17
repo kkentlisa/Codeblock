@@ -138,3 +138,10 @@ function CreateBlock(type, x, y){
     blocksInWorkSpace.push(newBlock);
     return newBlock;
 }
+
+function DeleteBlock(id){
+    const index = blocksInWorkSpace.findIndex(block => block.id === id);
+    if (index !== -1){
+        blocksInWorkSpace.splice(index, 1);
+    }
+}
