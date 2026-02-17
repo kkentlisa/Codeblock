@@ -34,8 +34,7 @@ function GetRandomPositionInWorkspace(){
 }
 
 window.addEventListener('load', function() {
-    if (typeof blocksInWorkSpace !== 'undefined' && blocksInWorkSpace.length > 0) {
-        renderAllBlocks(blocksInWorkSpace);
-    }
+    LoadBlocksFromStorage();
+    renderAllBlocks(blocksInWorkSpace);
     BlockButtonClick();
 })
