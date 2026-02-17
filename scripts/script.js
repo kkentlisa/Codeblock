@@ -63,12 +63,7 @@ function renderBlock(blockData) {
 
     deleteBtn.onclick = function(e) {
         e.stopPropagation();
-
-        const index = blocksInWorkSpace.findIndex(b => b.id === blockData.id);
-        if (index !== -1) {
-            blocksInWorkSpace.splice(index, 1);
-        }
-
+        DeleteBlock(blockData.id);
         block.remove();
     };
 
