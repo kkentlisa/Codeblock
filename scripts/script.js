@@ -75,8 +75,9 @@ function renderBlock(blockData) {
 function renderAllBlocks(blocksArray) {
     if (!workspace) return;
 
-    workspace.innerHTML = '';
-
+    const blocks = workspace.querySelectorAll('.block-container');
+    blocks.forEach(block => block.remove());
+    
     blocksArray.forEach(blockData => {
         const containerElement = renderBlock(blockData);
         workspace.appendChild(containerElement);
