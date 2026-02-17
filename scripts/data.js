@@ -162,3 +162,10 @@ function LoadBlocksFromStorage(){
         }
     }
 }
+
+function ResetAllBlocks(){
+    blocksInWorkSpace = [];
+    blockId = 0;
+
+    sessionStorage.removeItem("blocksInWorkSpace");
+}

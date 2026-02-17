@@ -33,8 +33,17 @@ function GetRandomPositionInWorkspace(){
 
 }
 
+function ResetButtonClick(){
+    const resetButton = document.querySelector('.workSpaceButton[data-type="delete"]');
+    resetButton.addEventListener("click", function(){
+        ResetAllBlocks();
+        renderAllBlocks(blocksInWorkSpace);
+    });
+}
+
 window.addEventListener('load', function() {
     LoadBlocksFromStorage();
     renderAllBlocks(blocksInWorkSpace);
     BlockButtonClick();
+    ResetButtonClick();
 })
