@@ -26,6 +26,7 @@ function setupDraggable(element) {
                     block.position.x = newX;
                     block.position.y = newY;
 
+                    SaveBlocksToStorage();
                 }
             }
         }
