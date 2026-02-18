@@ -25,6 +25,7 @@ function setupDraggable(element) {
                 if (block) {
                     block.position.x = newX;
                     block.position.y = newY;
+
                 }
             }
         }
@@ -47,12 +48,11 @@ function renderBlock(blockData) {
     block.dataset.id = blockData.id;
 
     const typeNames = {
-        'start': 'Старт',
-        'variableInit': 'Переменная',
-        'assignValue': 'Присвоить',
-        'assignArithmeticBlock': 'Вычислить',
-        'add': 'Сложение',
-        'subtract': 'Вычитание'
+        'input': 'Ввод',
+        'variableInit': 'Объявить переменную',
+        'assignValue': 'Присваивание',
+        'if': 'Условие if',
+        'while': 'Цикл while',
     };
     block.textContent = typeNames[blockData.type] || blockData.type;
 
