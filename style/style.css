@@ -104,28 +104,73 @@ h2{
     grid-column: 2;
     grid-row: 1/span 3;
     background-color: rgba(255, 20, 147, 0.1);
+    display: flex;
 }
-.workSpaceButton{
+.blockWorkSpaceButton{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: auto;
+    z-index: 10;
+    padding: 6px;
+}
+.workSpaceButton {
+    position: relative;
     background-color: white;
     border-radius: 50%;
-    padding: 5px;
     width: 34px;
     height: 34px;
     border: 2px solid deeppink;
-    background-image: url("/image/icons8-trash.svg");
     background-position: center;
     background-size: 24px;
     background-repeat: no-repeat;
+    display: flex;
 }
-
+.workSpaceButton[data-type="delete"]{
+    background-image: url("/image/icons8-trash.svg");
+}
+.workSpaceButton[data-type="run"]{
+    background-image: url("/image/icons8-start-50.png");
+}
+.blockButtonDelete, .blockButtonRun{
+    position: absolute;
+    right: 45px;
+    color: black;
+    background-color: white;
+    padding: 1px;
+    width: 80px;
+    height: 20px;
+    border: 2px solid deeppink;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+}
+.blockButtonDelete{
+    top: 13px;
+}
+.blockButtonRun{
+    top: 53px;
+}
 .workSpaceButton:hover{
     cursor: pointer;
     border-width: 3px;
     transform: scale(1.05);
+}
+.workSpaceButton[data-type="delete"]:hover{
     background-image: url("/image/icons8-trash.gif");
+}
+.workSpaceButton[data-type="run"]:hover{
+    background-image: url("/image/icons8-start.gif");
+}
+.workSpaceButton[data-type="delete"]:hover ~ .blockButtonDelete{
+    opacity: 1;
+}
+.workSpaceButton[data-type="run"]:hover ~ .blockButtonRun {
+    opacity: 1;
 }
 .outputPanel{
     border: 2px solid limegreen;
