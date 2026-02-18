@@ -111,20 +111,21 @@ h2{
     right: 5px;
     background-color: white;
     border-radius: 50%;
-    padding: 4px 0;
+    padding: 5px;
     width: 34px;
     height: 34px;
     border: 2px solid deeppink;
+    background-image: url("/image/icons8-trash.svg");
+    background-position: center;
+    background-size: 24px;
+    background-repeat: no-repeat;
 }
-img{
-    background-color: transparent;
-    width: 23px;
-    height: 23px;
-}
+
 .workSpaceButton:hover{
     cursor: pointer;
     border-width: 3px;
     transform: scale(1.05);
+    background-image: url("/image/icons8-trash.gif");
 }
 .outputPanel{
     border: 2px solid limegreen;
