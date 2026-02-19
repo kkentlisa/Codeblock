@@ -10,20 +10,89 @@ function renderBlock(blockData) {
     container.style.top = blockData.position.y + 'px';
 
     const block = document.createElement('div');
-
     block.classList.add('block');
     block.classList.add(`block-${blockData.type}`);
-
     block.dataset.id = blockData.id;
 
+    block.innerHTML = '';
+
     const typeNames = {
+        'start': 'Старт',
         'input': 'Ввод',
+        'print': 'Вывод',
         'variableInit': 'Объявить переменную',
         'assignValue': 'Присваивание',
         'if': 'Условие if',
+        'if-else': 'Условие if-else',
         'while': 'Цикл while',
+        'add': 'Сложение',
+        'subtract': 'Вычитание',
+        'multiply': 'Умножение',
+        'div': 'Деление',
+        'mod': 'Остаток',
+        'gt': 'Больше',
+        'lt': 'Меньше',
+        'eq': 'Равно',
+        'and': 'И',
+        'or': 'ИЛИ',
+        'not': 'НЕ',
     };
+
     block.textContent = typeNames[blockData.type] || blockData.type;
+
+    if (blockData.type === 'input') {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'block-input';
+        input.value = blockData.data.message || '';
+        input.placeholder = 'Текст для пользователя';
+
+        input.addEventListener('input', function(e) {
+            blockData.data.message = e.target.value;
+            SaveBlocksToStorage();
+        });
+        input.addEventListener('mousedown', function(e) {
+            e.stopPropagation();
+        });
+
+        block.appendChild(input);
+    }
+    else if (blockData.type === 'variableInit') {
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.className = 'block-input';
+        nameInput.value = blockData.data.name || '';
+        nameInput.placeholder = 'Имя переменной';
+
+        nameInput.addEventListener('input', function(e) {
+            blockData.data.name = e.target.value;
+            SaveBlocksToStorage();
+        });
+
+        nameInput.addEventListener('mousedown', function(e) {
+            e.stopPropagation();
+        });
+
+        block.appendChild(nameInput);
+    }
+    else if (blockData.type === 'assignValue') {
+        const valueInput = document.createElement('input');
+        valueInput.type = 'text';
+        valueInput.className = 'block-input';
+        valueInput.value = blockData.data.value !== null ? blockData.data.value : '';
+        valueInput.placeholder = 'Значение переменной';
+
+        valueInput.addEventListener('input', function(e) {
+            blockData.data.value = e.target.value;
+            SaveBlocksToStorage();
+        });
+
+        valueInput.addEventListener('mousedown', function(e) {
+            e.stopPropagation();
+        });
+
+        block.appendChild(valueInput);
+    }
 
     const deleteBtn = document.createElement('span');
     deleteBtn.className = 'delete-btn';

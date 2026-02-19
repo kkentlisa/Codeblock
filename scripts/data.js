@@ -9,6 +9,10 @@ function CreateBlock(type, x, y){
     }
 
     else if (type === "input"){
+        data.message = "";
+    }
+
+    else if (type === "print"){
         data.value = "";
     }
 
