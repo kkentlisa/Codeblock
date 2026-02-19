@@ -132,6 +132,8 @@ function CreateBlock(type, x, y){
         id: blockId++,
         type: type,
         position: {x: x, y: y},
+        parent: null,
+        child: null,
         data: data
     }
 
