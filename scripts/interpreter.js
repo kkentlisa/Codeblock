@@ -8,7 +8,7 @@ function GetVariable(name) {
     return variables[name];
 }
 
-function evaluateExpression(block) {
+function EvaluateExpression(block) {
     if (block.type === "input") {
         const value = block.data.value;
         if (isNaN(value)) {
@@ -19,26 +19,26 @@ function evaluateExpression(block) {
     }
 
     else if (block.type === "add") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue + rightValue;
     }
 
     else if (block.type === "subtract") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue - rightValue;
     }
 
     else if (block.type === "multiply") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue * rightValue;
     }
 
     else if (block.type === "div") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
 
         if (rightValue === 0) {
             // пока просто вывод в консоль
@@ -50,8 +50,8 @@ function evaluateExpression(block) {
     }
 
     else if (block.type === "mod") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
 
         if (rightValue === 0) {
             // пока просто вывод в консоль
@@ -65,38 +65,38 @@ function evaluateExpression(block) {
 
 function EvaluateCondition(block) {
     if (block.type === "gt") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue > rightValue;
     }
 
     else if (block.type === "lt") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue < rightValue;
     }
 
     else if (block.type === "eq") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue === rightValue;
     }
 
     else if (block.type === "neq") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue !== rightValue;
     }
 
     else if (block.type === "gte") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue >= rightValue;
     }
 
     else if (block.type === "lte") {
-        const leftValue = evaluateExpression(block.data.left);
-        const rightValue = evaluateExpression(block.data.right);
+        const leftValue = EvaluateExpression(block.data.left);
+        const rightValue = EvaluateExpression(block.data.right);
         return leftValue <= rightValue;
     }
 
@@ -115,5 +115,49 @@ function EvaluateCondition(block) {
     else if (block.type === "not") {
         const operandValue = EvaluateCondition(block.data.operand);
         return !operandValue;
+    }
+}
+
+function ExecuteBlock(block) {
+    if (!block) return;
+
+    switch (block.type) {
+        case "variableInit":
+            SetVariable(block.data.name, block.data.value);
+            break;
+        case "assignValue":
+            const value = EvaluateExpression(block.data.value);
+            SetVariable(block.data.variable, value);
+            break;
+        case "if":
+            if (EvaluateCondition(block.data.condition)) {
+                block.data.thenBlocks.forEach(id =>{
+                    const childBlock = blocksInWorkSpace.find(b => b.id === id);
+                    if (childBlock) ExecuteBlock(childBlock);
+                });
+            }
+            break;
+        case "ifElse":
+            if (EvaluateCondition(block.data.condition)) {
+                block.data.thenBlocks.forEach(id =>{
+                    const childBlock = blocksInWorkSpace.find(b => b.id === id);
+                    if (childBlock) ExecuteBlock(childBlock);
+                });
+            }
+            else {
+                block.data.elseBlocks.forEach(id =>{
+                    const childBlock = blocksInWorkSpace.find(b => b.id === id);
+                    if (childBlock) ExecuteBlock(childBlock);
+                });
+            }
+            break;
+        case "while":
+            while (EvaluateCondition(block.data.condition)){
+                block.data.bodyBlocks.forEach(id =>{
+                    const childBlock = blocksInWorkSpace.find(b => b.id === id);
+                    if (childBlock) ExecuteBlock(childBlock);
+                });
+            }
+
     }
 }
