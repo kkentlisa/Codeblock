@@ -56,25 +56,41 @@ h2{
     border-radius: 15px;
     text-align: center;
     font-family: "Comic Sans MS";
-
 }
-.blockPanelButton[data-type="input"] {
+.blockPanelButton[data-type="start"],
+.blockPanelButton[data-type="input"],
+.blockPanelButton[data-type="print"] {
     background-color: lightcoral;
     border: 3px solid #ff033e;
 }
-.blockPanelButton[data-type="variableInit"]{
+.blockPanelButton[data-type="variableInit"],
+.blockPanelButton[data-type="assignValue"] {
+    background-color: lightsalmon;
+    border: 3px solid orangered;
+}
+.blockPanelButton[data-type="if"],
+.blockPanelButton[data-type="if-else"],
+.blockPanelButton[data-type="while"]{
     background-color: palegoldenrod;
     border: 3px solid gold;
 }
-.blockPanelButton[data-type="assignValue"]{
+.blockPanelButton[data-type="add"],
+.blockPanelButton[data-type="subtract"],
+.blockPanelButton[data-type="multiply"],
+.blockPanelButton[data-type="div"],
+.blockPanelButton[data-type="mod"]{
     background-color: lightgreen;
     border: 3px solid limegreen;
 }
-.blockPanelButton[data-type="if"]{
+.blockPanelButton[data-type="gt"],
+.blockPanelButton[data-type="lt"],
+.blockPanelButton[data-type="eq"]{
     background-color: lightblue;
     border: 3px solid dodgerblue;
 }
-.blockPanelButton[data-type="while"]{
+.blockPanelButton[data-type="and"],
+.blockPanelButton[data-type="or"],
+.blockPanelButton[data-type="not"]{
     background-color: plum;
     border: 3px solid #cd00cd;
 }
@@ -83,19 +99,35 @@ h2{
     transform: scale(1.05) translateY(-2px);
     cursor: pointer;
 }
-.blockPanelButton:hover[data-type="input"]{
+.blockPanelButton:hover[data-type="start"],
+.blockPanelButton:hover[data-type="input"],
+.blockPanelButton:hover[data-type="print"]{
     background-color: #ff033e;
 }
-.blockPanelButton:hover[data-type="variableInit"]{
+.blockPanelButton:hover[data-type="variableInit"],
+.blockPanelButton:hover[data-type="assignValue"]{
+    background-color: orangered;
+}
+.blockPanelButton:hover[data-type="if"],
+.blockPanelButton:hover[data-type="if-else"],
+.blockPanelButton:hover[data-type="while"]{
     background-color: gold;
 }
-.blockPanelButton:hover[data-type="assignValue"]{
+.blockPanelButton:hover[data-type="add"],
+.blockPanelButton:hover[data-type="subtract"],
+.blockPanelButton:hover[data-type="multiply"],
+.blockPanelButton:hover[data-type="div"],
+.blockPanelButton:hover[data-type="mod"]{
     background-color: limegreen;
 }
-.blockPanelButton:hover[data-type="if"]{
+.blockPanelButton:hover[data-type="gt"],
+.blockPanelButton:hover[data-type="lt"],
+.blockPanelButton:hover[data-type="eq"]{
     background-color: dodgerblue;
 }
-.blockPanelButton:hover[data-type="while"]{
+.blockPanelButton:hover[data-type="and"],
+.blockPanelButton:hover[data-type="or"],
+.blockPanelButton:hover[data-type="not"]{
     background-color: #cd00cd;
 }
 .workSpace{
@@ -131,10 +163,10 @@ h2{
     display: flex;
 }
 .workSpaceButton[data-type="delete"]{
-    background-image: url("/image/icons8-trash.svg");
+    background-image: url("../image/icons8-trash.svg");
 }
 .workSpaceButton[data-type="run"]{
-    background-image: url("/image/icons8-start-50.png");
+    background-image: url("../image/icons8-start-50.png");
 }
 .blockButtonDelete, .blockButtonRun{
     position: absolute;
@@ -161,10 +193,10 @@ h2{
     transform: scale(1.05);
 }
 .workSpaceButton[data-type="delete"]:hover{
-    background-image: url("/image/icons8-trash.gif");
+    background-image: url("../image/icons8-trash.gif");
 }
 .workSpaceButton[data-type="run"]:hover{
-    background-image: url("/image/icons8-start.gif");
+    background-image: url("../image/icons8-start.gif");
 }
 .workSpaceButton[data-type="delete"]:hover ~ .blockButtonDelete{
     opacity: 1;

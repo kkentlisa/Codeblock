@@ -1,27 +1,45 @@
 .block{
     position: relative;
     border-radius: 10px;
-    padding: 5px 10px;
-    margin: 10px;
-
+    padding: 2px 5px;
+    margin: 5px;
+    font-size: 12px;
+    width: auto;
 }
-.block-input{
+.heading-start,
+.block-input,
+.block-print{
     border: 3px solid #ff033e;
     background-color: lightcoral;
 }
-.block-variableInit{
+.block-variableInit,
+.block-assignValue{
+    border: 2px solid orangered;
+    background-color: lightsalmon;
+}
+.block-if,
+.block-if-else,
+.block-while{
     border: 2px solid gold;
     background-color: palegoldenrod;
 }
-.block-assignValue{
+.block-add,
+.block-subtract,
+.block-multiply,
+.block-div,
+.block-mod{
     border: 2px solid limegreen;
     background-color: lightgreen;
 }
-.block-if{
+.block-gt,
+.block-lt,
+.block-eq{
     border: 2px solid dodgerblue;
     background-color: lightskyblue;
 }
-.block-while{
+.block-and,
+.block-or,
+.block-not{
     border: 2px solid #cd00cd;
     background-color: plum;
 }

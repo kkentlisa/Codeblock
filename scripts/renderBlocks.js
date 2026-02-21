@@ -43,7 +43,7 @@ function renderBlock(blockData) {
     if (blockData.type === 'input') {
         const input = document.createElement('input');
         input.type = 'text';
-        input.className = 'block-input';
+        input.className = 'blocks-input';
         input.value = blockData.data.message || '';
         input.placeholder = 'Текст для пользователя';
 
@@ -60,7 +60,7 @@ function renderBlock(blockData) {
     else if (blockData.type === 'variableInit') {
         const nameInput = document.createElement('input');
         nameInput.type = 'text';
-        nameInput.className = 'block-input';
+        nameInput.className = 'blocks-input';
         nameInput.value = blockData.data.name || '';
         nameInput.placeholder = 'Имя переменной';
 
@@ -78,7 +78,7 @@ function renderBlock(blockData) {
     else if (blockData.type === 'assignValue') {
         const valueInput = document.createElement('input');
         valueInput.type = 'text';
-        valueInput.className = 'block-input';
+        valueInput.className = 'blocks-input';
         valueInput.value = blockData.data.value !== null ? blockData.data.value : '';
         valueInput.placeholder = 'Значение переменной';
 
